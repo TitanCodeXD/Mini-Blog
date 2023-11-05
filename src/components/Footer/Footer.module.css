@@ -8,11 +8,12 @@
 }
 
 .footer a {
+    font-weight: 600;
     text-decoration: none;
-    color: red;
+    color: rgb(158, 70, 70);
 }
 
 .footer a:hover{
-    transition: 0.3s;
-    color: blue;
+    transition: 0.4s;
+    color: rgb(115, 115, 219);
 }

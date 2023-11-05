@@ -6,7 +6,7 @@ import styles from './Home.module.css'
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles.lista}>
         <h1>Home</h1>
     </div>
   )

@@ -1,3 +1,38 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+}
+
+body {
+  background-color: #f6fcff;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input::placeholder, 
+textarea::placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+input::focus,
+textarea:focus {
+  outline: none;
+}
+
+a, 
+nav button {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: black;
+  transition: .4s;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a:hover,
+nav button:hover {
+  color: #bbb;
 }
