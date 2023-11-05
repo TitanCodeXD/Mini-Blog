@@ -18,6 +18,7 @@ const Register = () => {
           <input 
           type = "text" 
           name = "displayName" 
+          autoComplete='off'
           required placeholder = 'Nome do usuário'></input>
         </label>
 
