@@ -1,12 +1,21 @@
 //Imports React
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+
+//Import Logo
 import Logo from "../../img/blog-image2.png";
+
+//Import context
+import { useAuthValue } from '../../context/AuthContext';
+
+//Import Hook
+import { useAuthentication } from '../../hooks/useAuthentication';
 
 //CSS
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
+    const {user} = useAuthValue();
 
   return (
     <nav className = {styles.navbar}>
@@ -16,7 +25,9 @@ const Navbar = () => {
             <NavLink to = "/" className={({isActive}) => (isActive ? styles.active : '')}>Home</NavLink>
         </li>
 
-        <li>
+        {!user && (
+        <>
+         <li>
             <NavLink to = "/login" className={({isActive}) => (isActive ? styles.active : '')}>Entrar</NavLink>
         </li>
 
@@ -24,6 +35,19 @@ const Navbar = () => {
             <NavLink to = "/register" className={({isActive}) => (isActive ? styles.active : '')}>Cadastrar</NavLink>
         </li>
         
+        </>
+        )}
+        {user && (
+        <>
+            <li>
+            <NavLink to = "/posts/create" className={({isActive}) => (isActive ? styles.active : '')}>Novo Post</NavLink>
+        </li>
+
+        <li>
+            <NavLink to = "/dashboard" className={({isActive}) => (isActive ? styles.active : '')}>Dashboard</NavLink>
+        </li>
+        </>
+        )}
         <li>
             <NavLink to = "/about" className={({isActive}) => (isActive ? styles.active : '')}>Sobre</NavLink>
         </li>
