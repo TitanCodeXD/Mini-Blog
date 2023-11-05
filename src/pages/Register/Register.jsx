@@ -1,6 +1,13 @@
+//Firebase
+import { db } from '../../firebase/config';
+
 //Imports React
 import React from 'react'
 import { useState, useEffect } from 'react';
+
+//Hooks
+import { useAuthentication } from '../../hooks/useAuthentication';
+
 
 //CSS
 import styles from './Register.module.css';
@@ -12,7 +19,9 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const {createUser, error: authError, loading } = useAuthentication();
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     setError("")
@@ -27,10 +36,19 @@ const Register = () => {
       setError("As senhas precisam ser iguais!")
       return
     }
-
-
+    const res = await createUser(user)
+    
   }
 
+  useEffect (() => {
+
+    if (authError){
+      setError(authError)
+    }
+
+  }, [authError]);
+  
+  
   return (
 
     <div className={styles.register}>
@@ -79,7 +97,8 @@ const Register = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}></input>
         </label>
 
-        <button className='btn'>Cadastrar</button>
+        {!loading && <button className='btn'>Cadastrar</button>}
+        {loading && <button className='btn' disabled>Aguarde...</button>}
         {error && <p className='error'>{error}</p>}
        </form>
     </div>
