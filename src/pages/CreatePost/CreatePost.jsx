@@ -76,7 +76,7 @@ const CreatePost = () => {
           />
         </label>
 
-          <button>Teste</button>
+          <button className='btn'>Postar!</button>
         {/* {!loading && <button className='btn'>Cadastrar</button>}
         {loading && <button className='btn' disabled>Aguarde...</button>}
         {error && <p className='error'>{error}</p>} */}
