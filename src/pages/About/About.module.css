@@ -11,7 +11,13 @@
 }
 
 .about a {
-    display: block;
-    margin-top: 15px;
-    padding: 10px 15px;
+    font-weight: 500;
+}
+
+.about h2 {
+    margin-top: 50px;
+}
+
+.about h3 {
+    margin-bottom: 5px;
 }

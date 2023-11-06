@@ -21,6 +21,7 @@ export const useAuthentication = () => {
     }
 
     //Register
+
     const createUser = async (data) => {
         checkIfIsCancelled()
 
@@ -69,6 +70,39 @@ export const useAuthentication = () => {
         signOut(auth)
     }
 
+    //Login - sign in
+    const login = async(data) => {
+        checkIfIsCancelled();
+
+        setLoading(true);
+        setError(false);
+
+        try {
+            
+            await signInWithEmailAndPassword(auth, data.email, data.password)
+            setLoading(false);
+
+        } catch (error) {
+
+            let systemErrorMessage;
+
+            if (error.message.includes("invalid-login-credentials")) {
+             systemErrorMessage = "Usuário não encontrado. Veja se seu e-mail e senha estão corretos.";
+            } else if (error.message.includes("too-many-requests")){
+            systemErrorMessage = "Muitas solicitações com este email, tente novamente mais tarde";
+            }
+            else {
+            systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+        }
+
+            setError(systemErrorMessage);
+            console.log(error);
+            setLoading(false);
+
+        }
+
+    }
+
 
     useEffect(() => {
         return () => setCancelled(true);
@@ -80,5 +114,6 @@ export const useAuthentication = () => {
         error,
         loading,
         logout,
+        login,
     };
 };
