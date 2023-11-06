@@ -1,7 +1,7 @@
 //React Imports
 import React from 'react'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 //Context
 import { useAuthValue } from '../../context/AuthContext';
@@ -23,6 +23,8 @@ const CreatePost = () => {
 
   const {insertDocument, response } = useInsertDocument("posts");
 
+  const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,24 +32,42 @@ const CreatePost = () => {
 
     //Validate image URL
 
+    try {
+      
+      new URL(image);
 
+    } catch (error) {
+      
+      setFormError("A imagem precisa ser uma URL");
+
+    }
 
     //Criar array de Tags
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
 
 
     //Checar todos os valores
+
+    if(!title || !image || !tags || !body){
+      setFormError("Por favor, preencha todos os campos!")
+    }
+
+    if(formError) {
+      return;
+    }
     
     insertDocument({
       title,
       image,
       body,
-      tags,
+      tagsArray,
       uid: user.uid,
       createdBy: user.displayName
     })
 
     // Redirect Home Pages
+    navigate("/");
 
     }
 
@@ -108,6 +128,7 @@ const CreatePost = () => {
         {!response.loading && <button className='btn'>Postar!</button>}
         {response.loading && <button className='btn' disabled>Aguarde...</button>}
         {response.error && <p className='error'>{response.error}</p>}
+        {formError && <p className='error'>{formError}</p>}
 
         </form>
     </div>
