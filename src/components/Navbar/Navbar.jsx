@@ -58,7 +58,6 @@ const Navbar = () => {
                 <button onClick={logout}>Sair</button>
             </li>
         )}
-
     </ul>
     </nav>
   )

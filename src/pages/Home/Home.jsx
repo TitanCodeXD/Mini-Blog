@@ -9,7 +9,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import styles from './Home.module.css'
 
 //Images
-import Lupa from '../../img/Lupa.png';
+import Lupa from '../../img/Lupa3.png';
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -30,7 +30,8 @@ const Home = () => {
           placeholder ='Ou busque por tags específicas...'
           onChange={(e) => setQuery(e.target.value)}
           ></input>
-          <button className='btn btn-dark'>Pesquisar</button>
+          <button className='btn btn-dark'>Pesquisar 
+          <img src = {Lupa} width = "30px" height = "30px"></img></button>
         </form>
 
         <div>

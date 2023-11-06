@@ -29,6 +29,12 @@
     padding: .4em .6em;
 }
 
+.links_list button:hover{
+    transition: .4s;
+    font-weight: 600;
+    color: red;
+}
+
 .active {
     background-color: black;
     color: white;
