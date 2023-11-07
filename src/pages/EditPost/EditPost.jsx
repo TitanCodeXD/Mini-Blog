@@ -7,8 +7,9 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useAuthValue } from '../../context/AuthContext';
 
 //Hooks
-import { useInsertDocument } from '../../hooks/useInsertDocument';
+
 import { useFetchDocument } from '../../hooks/useFetchDocument';
+import { useUpdateDocument } from '../../hooks/useUpdateDocument';
 
 //CSS
 import styles from './EditPost.module.css';
@@ -38,7 +39,7 @@ const EditPost = () => {
 
   const {user} = useAuthValue();
 
-  const {insertDocument, response } = useInsertDocument("posts");
+  const {updateDocument, response } = useUpdateDocument("posts");
 
   const navigate = useNavigate();
 
@@ -74,14 +75,17 @@ const EditPost = () => {
       return;
     }
     
-    insertDocument({
-      title,
-      image,
-      body,
-      tagsArray,
-      uid: user.uid,
-      createdBy: user.displayName
-    })
+    const data = {
+
+            title,
+            image,
+            body,
+            tagsArray,
+            uid: user.uid,
+            createdBy: user.displayName
+    }
+
+    updateDocument(id, data);
 
     // Redirect Home Pages
     navigate("/");
