@@ -1,68 +1,42 @@
-//React Imports
-import { useState, useEffect } from "react";
-
-//Firebase
-import { db } from "../firebase/config";
-import { collection, query, orderBy, onSnapshot, where, QuerySnapshot } from "firebase/firestore";
-
-export const useFetchDocuments = (docColletion, search = null, uid = null) => {
-
+import {useState, useEffect} from 'react';
+import {db} from '../firebase/config';
+import {collection,query,onSnapshot,where, orderBy, getDocs} from 'firebase/firestore' 
+ 
+export const useFetchDocuments = (docCollection, search = null, uid = null) => {
+ 
     const [documents, setDocuments] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
-
-    //Memory leak
-
-    const [cancelled, setCancelled] = useState(false);
-
-    useEffect(() => {
-
-        async function loadData(){
-            if(cancelled) return
-
-            setLoading(true)
-
-            const collectionRef = await collection(db, docColletion)
-
+ 
+    // deal with memory leak
+    const [cancelled, setCancelled] = useState(false)
+ 
+        useEffect(() => {
+        
+            const getUsers = async() => {
+            
+            if(cancelled) return 
+ 
+            setLoading(true);
+ 
+            const userCollectionRef = collection(db,docCollection);
+            
             try {
-                let q;
-
-                //Busca
-
-                //Dashboard
-
-                q = await query(collectionRef, orderBy('createAt','desc')) ;
-
-                await onSnapshot(q, (QuerySnapshot) => {
-
-                    setDocuments(
-                        QuerySnapshot.docs.map((doc) => ({
-                            id:doc.id,
-                            ...doc.data(),
-                        }))
-                    )
-                });
-
-                setLoading(false);
-
+                let q ;
+                    q= await getDocs(userCollectionRef);
+                    setDocuments( q.docs.map((doc) => ({
+                        ...doc.data(),
+                        id:doc.id,
+                    })))
+                    setLoading(false);
+                console.log(documents)
             } catch (error) {
                 
-                console.log(error);
-                setError(error.message);
-
-                setLoading(false);
-
             }
-
+ 
         }
-
-        loadData();
-    }, [docColletion, search, uid, ])
-
-    useEffect(() => {
-        return () => setCancelled(true);
-    }, [])
-
-    return {documents, loading, error};
-
+        getUsers();
+    },[])
+ 
+    return {documents,loading,error};
 }
