@@ -55,7 +55,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
  
         }
         getUsers();
-    },[])
+    },[docCollection, search, uid, cancelled])
  
     return {documents,loading,error};
 }
