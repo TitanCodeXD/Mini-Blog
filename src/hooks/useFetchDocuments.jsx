@@ -22,7 +22,25 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
             const userCollectionRef = collection(db,docCollection);
             
             try {
+
                 let q ;
+
+                if (search) {
+                    q = await query(
+                      userCollectionRef,
+                      where("tags", "array-contains", search),
+                      orderBy("createdAt", "desc")
+                    );
+                  } else if (uid) {
+                    q = await query(
+                      userCollectionRef,
+                      where("uid", "==", uid),
+                      orderBy("createdAt", "desc")
+                    );
+                  } else {
+                    q = await query(userCollectionRef, orderBy("createdAt", "desc"));
+                  }
+
                     q= await getDocs(userCollectionRef);
                     setDocuments( q.docs.map((doc) => ({
                         ...doc.data(),
@@ -30,6 +48,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                     })))
                     setLoading(false);
                 console.log(documents)
+                
             } catch (error) {
                 
             }
