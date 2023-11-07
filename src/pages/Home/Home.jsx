@@ -38,7 +38,7 @@ const Home = () => {
         <input
           type="text"
           placeholder="Ou busque por tags..."
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value.toLocaleLowerCase())}
         />
         <button className="btn btn-dark">Pesquisar
         <img src = {Lupa} width = "30px" height = "30px"></img>
