@@ -17,6 +17,15 @@ const Post = () => {
     {post && (
       <>
         <h1>{post.title}</h1>
+        <img src = {post.image} alt = {post.title}></img>
+        <p>{post.body}</p>
+        <h4>Postado por: {post.createdBy}</h4>
+        <h3>Este post trata sobre:</h3>
+        <div className = {styles.tags}>
+        {post.tagsArray.map((tag) => (
+            <p key = {tag}><span>#</span>{tag}</p>
+        ))}
+        </div>
       </>
     )}
   </div>
