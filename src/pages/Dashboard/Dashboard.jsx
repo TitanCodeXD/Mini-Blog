@@ -18,8 +18,18 @@ const Dashboard = () => {
   //Posts do usuário
   const {documents: posts, loading, error} = useFetchDocuments("posts", null, uid);
 
+  //Deletar posts
+  const deleteDocument = (id) => {
+    if(loading){
+      return <p>Carregando...</p>
+    }
+  }
+
+  console.log(uid);
+  console.log(posts);
+
   return (
-    <div>
+    <div className={styles.dashboard}>
         <h2>Dashboard</h2>
         <p>Gerencie seus posts</p>
         {posts && posts.length === 0 ? (
@@ -29,7 +39,7 @@ const Dashboard = () => {
             Criar primeiro post
           </Link>
         </div>) : (
-        <div>
+        <div className={styles.post_header}>
           <span>Título</span>
           <span>Ações</span>
         </div>)}
@@ -37,8 +47,7 @@ const Dashboard = () => {
         {posts &&
         posts.map((post) => (
           <div className={styles.post_row} key={post.id}>
-            <p>{post.title}</p>
-            {/*<img src = {post.image} alt = {post.title}></img>*/}
+            <p>{post.title} <img src = {post.image} alt = {post.title}></img></p>
             <div className={styles.actions}>
               <Link to={`/posts/${post.id}`} className="btn btn-outline">
                 Ver
