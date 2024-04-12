@@ -13,7 +13,7 @@ Currently, two official plugins are available:
 ## Some screenshots of the project
 
 # Login
-https://cdn.discordapp.com/attachments/720151609056690176/1228478347932078211/image.png?ex=662c309e&is=6619bb9e&hm=4a3b12d98a0bf7a145451a6c6497f5e21e56493ffd3a8871197c2aedb6d806db&
+!(Login)[https://cdn.discordapp.com/attachments/720151609056690176/1228478347932078211/image.png?ex=662c309e&is=6619bb9e&hm=4a3b12d98a0bf7a145451a6c6497f5e21e56493ffd3a8871197c2aedb6d806db&]
 
 # Register
 
@@ -23,4 +23,4 @@ https://cdn.discordapp.com/attachments/720151609056690176/1228478347932078211/im
 
 
 
-# Deploy --> [Site](https://mini-blog-web.netlify.app)
+# Deploy --> ![Site](https://mini-blog-web.netlify.app)
