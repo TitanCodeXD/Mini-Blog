@@ -1,6 +1,6 @@
 # Deploy To Access the Application --> https://mini-blog-web.netlify.app
 
-# This project is supposed to be a 'Blog', with Login, Registration and possibility to post an image with tags.
+This project is supposed to be a 'Blog', with Login, Registration and possibility to post an image with tags.
 
 ## Some screenshots of the project
 
