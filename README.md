@@ -22,4 +22,4 @@ Currently, two official plugins are available:
 ![image](https://github.com/TitanCodeXD/Mini-Blog/assets/91525737/4f9ea92a-efcb-4601-8a23-b33ca45c5100)
 
 
-# Deploy To Access the Application --> ![Site](https://mini-blog-web.netlify.app)
+# Deploy To Access the Application --> https://mini-blog-web.netlify.app
