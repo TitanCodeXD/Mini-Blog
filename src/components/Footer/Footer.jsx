@@ -13,7 +13,7 @@ const Footer = () => {
                 <a href="https://portfolio-wesley-santos.netlify.app" target="_blank">
                     Wesley Santos
                 </a>
-                . Mini Blog &copy; 2023
+                . Mini Blog &copy; 2026
             </p>
         </footer>
     );
