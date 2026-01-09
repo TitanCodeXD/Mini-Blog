@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.search_form{
+.search_form {
     max-width: 100%;
     width: 60%;
     display: flex;
@@ -32,10 +32,25 @@
     text-align: center;
 }
 
-.noposts p{
+.noposts p {
     margin-bottom: 1.5em;
 }
 
-.moposts a{
+.moposts a {
     padding: 10px 25px;
+}
+
+@media screen and (max-width: 600px) {
+    .home h1 {
+        font-size: 1em;
+    }
+
+    .search_form input {
+        margin-right: 10px;
+        width: auto;
+    }
+
+    .search_form form {
+        height: 10%;
+    }
 }
