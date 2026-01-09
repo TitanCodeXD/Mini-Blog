@@ -46,11 +46,14 @@
     }
 
     .search_form input {
-        margin-right: 10px;
         width: auto;
     }
 
     .search_form form {
         height: 10%;
+    }
+
+    .search_form button {
+        scale: 0.75;
     }
 }
