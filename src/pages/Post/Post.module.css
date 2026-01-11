@@ -112,7 +112,13 @@
     }
 
     .tags p {
-        margin-right: 1em;
-        font-size: 0.8em;
+        font-size: 0.6em;
+    }
+
+    .tags {
+        max-width: 80%;
+        text-align: center;
+        justify-content: center;
+        margin: auto;
     }
 }
