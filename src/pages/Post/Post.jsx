@@ -19,7 +19,7 @@ const Post = () => {
                     <h1>{post.title}</h1>
                     <img src={post.image} alt={post.title}></img>
                     <div className={styles.scrollHint}>
-                        <span>Continue lendo</span>
+                        <span>Continue para ler</span>
                         <div className={styles.arrow}></div>
                     </div>
 
@@ -33,7 +33,12 @@ const Post = () => {
                     </p>
 
                     <h4>
-                        Postado por: <span>{post.createdBy}</span>
+                        Postado por: <span>{post.createdBy}</span> –{' '}
+                        {post.createdAt?.toDate().toLocaleDateString('pt-BR', {
+                            day: '2-digit',
+                            month: 'long',
+                            year: 'numeric',
+                        })}
                     </h4>
                     <h3>Este post trata sobre:</h3>
                     <div className={styles.tags}>

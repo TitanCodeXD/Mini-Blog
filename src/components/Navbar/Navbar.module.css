@@ -28,10 +28,15 @@
     padding: 0.4em 0.6em;
 }
 
+.links_list button {
+    font-weight: 600;
+    color: rgb(216, 72, 72);
+}
+
 .links_list button:hover {
     transition: 0.4s;
-    font-weight: 600;
-    color: red;
+    font-weight: 800;
+    color: rgb(216, 72, 72);
 }
 
 .active {
